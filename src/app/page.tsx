@@ -1,6 +1,7 @@
 'use client'
 
-import {FormEvent, useMemo, useState} from "react";
+import {useMemo, useState} from "react";
+import Image from 'next/image'
 import {getCurrentCurrencies} from "@/helpers";
 
 export default function Home() {
@@ -102,8 +103,18 @@ export default function Home() {
 
   return (
     <main>
-      <form className="mt:4 lg:mt-12 px-6 py-6 lg:px-10 lg:py-9 mx-auto bg-white container rounded-xl shadow-sm"
-            onSubmit={onSubmitForm}>
+      <form
+        className="relative mt:4 lg:mt-12 px-6 py-6 lg:px-10 lg:py-9 mx-auto bg-white container rounded-xl shadow-sm"
+        onSubmit={onSubmitForm}>
+
+        <a className="absolute top-5 right-5" href="https://github.com/orcuntuna/parama-ne-oldu" target="_blank">
+          <Image
+            src={require('@/app/github.svg')}
+            width={28}
+            height={28}
+            alt="Source Code on GitHub"
+          />
+        </a>
 
         <div>
           <h1 className="text-3xl font-semibold mb-0.5">Parama ne oldu?</h1>
@@ -138,7 +149,8 @@ export default function Home() {
             <label htmlFor="end-money" className="block text-sm font-medium leading-6 text-gray-900">Bugünkü Ücret
               (TL)</label>
             <div className="mt-2">
-              <input required={true} value={String(currentMoney) || ""} onChange={e => setCurrentMoney(Number(e.target.value))}
+              <input required={true} value={String(currentMoney) || ""}
+                     onChange={e => setCurrentMoney(Number(e.target.value))}
                      type="number" id="end-money"
                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                      placeholder="TL cinsinden miktar girin"/>
@@ -234,7 +246,7 @@ export default function Home() {
                           (Birim)
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Olması
-                          Beklenen (Birim)
+                          Beklenen (TL)
                         </th>
                         <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Fark
                           (Birim)
