@@ -1,6 +1,6 @@
 'use client'
 
-import {useMemo, useState} from "react";
+import { useMemo, useState} from "react";
 import Image from 'next/image'
 import {getCurrentCurrencies} from "@/helpers";
 
@@ -98,6 +98,8 @@ export default function Home() {
     const day = days.find(day => day.id === Number(dayId))
     if (day) {
       setSelectedDay(day)
+      setConvertedResult(null)
+      setCurrencies(undefined)
     }
   }
 
