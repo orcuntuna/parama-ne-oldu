@@ -1,12 +1,12 @@
 export type CurrencyType = {
-  usd: number,
-  eur: number,
+  usd: number
+  eur: number
   gold: number
 }
 
 export type DateType = {
-  id: number;
-  text: string;
+  id: number
+  text: string
   currency: CurrencyType
 }
 

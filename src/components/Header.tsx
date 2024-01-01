@@ -1,15 +1,10 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 const Header = () => {
   return (
     <>
       <a className="absolute top-5 right-5" href="https://github.com/orcuntuna/parama-ne-oldu" target="_blank">
-        <Image
-          src={require('@/assets/img/github.svg')}
-          width={28}
-          height={28}
-          alt="Source Code on GitHub"
-        />
+        <Image src={require('@/assets/img/github.svg')} width={28} height={28} alt="Source Code on GitHub" />
       </a>
 
       <div>

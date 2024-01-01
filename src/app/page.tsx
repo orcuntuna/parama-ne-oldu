@@ -1,13 +1,13 @@
 'use client'
 
-import {FormEvent, useState} from "react";
-import {getCurrentCurrencies} from "@/utils/helpers";
-import {dates} from "@/utils/dates";
-import Header from "@/components/Header";
-import ResultsTable from "@/components/ResultsTable";
-import CalculationForm from "@/components/CalculationForm";
-import Currencies from "@/components/Currencies";
-import {ConvertedResult, CurrencyType} from "@/utils/types";
+import { FormEvent, useState } from 'react'
+import { getCurrentCurrencies } from '@/utils/helpers'
+import { dates } from '@/utils/dates'
+import Header from '@/components/Header'
+import ResultsTable from '@/components/ResultsTable'
+import CalculationForm from '@/components/CalculationForm'
+import Currencies from '@/components/Currencies'
+import { ConvertedResult, CurrencyType } from '@/utils/types'
 
 export default function Home() {
   const [currencies, setCurrencies] = useState<CurrencyType>()
@@ -35,13 +35,13 @@ export default function Home() {
       currentCurrencies = currencies
     }
 
-    const oldUsd = (oldAmount / oldCurrencies.usd)
-    const oldEur = (oldAmount / oldCurrencies.eur)
-    const oldGold = (oldAmount / oldCurrencies.gold)
+    const oldUsd = oldAmount / oldCurrencies.usd
+    const oldEur = oldAmount / oldCurrencies.eur
+    const oldGold = oldAmount / oldCurrencies.gold
 
-    const newUsd = (currentAmount / currentCurrencies.usd)
-    const newEur = (currentAmount / currentCurrencies.eur)
-    const newGold = (currentAmount / currentCurrencies.gold)
+    const newUsd = currentAmount / currentCurrencies.usd
+    const newEur = currentAmount / currentCurrencies.eur
+    const newGold = currentAmount / currentCurrencies.gold
 
     const expectedUsdToTry = oldUsd * currentCurrencies.usd
     const expectedEurToTry = oldEur * currentCurrencies.eur
@@ -72,7 +72,7 @@ export default function Home() {
       differenceGold,
       differenceUsdToTry,
       differenceEurToTry,
-      differenceGoldToTry
+      differenceGoldToTry,
     }
 
     setConvertedResult(response)
@@ -83,7 +83,7 @@ export default function Home() {
   }
 
   const onChangeDay = (dateId: number) => {
-    const date = dates.find(date => date.id === dateId)
+    const date = dates.find((date) => date.id === dateId)
     if (date) {
       setSelectedDate(date)
       if (convertedResult) {
@@ -92,29 +92,28 @@ export default function Home() {
         setConvertedResult(undefined)
         setCurrencies(undefined)
       }
-
     }
   }
 
   return (
     <main>
-      <div
-        className="relative my:4 lg:my-12 px-6 py-6 lg:px-10 lg:py-9 mx-auto bg-white container rounded-xl shadow-sm">
+      <div className="relative my:4 lg:my-12 px-6 py-6 lg:px-10 lg:py-9 mx-auto bg-white container rounded-xl shadow-sm">
+        <Header />
 
-        <Header/>
+        <CalculationForm
+          selectedDate={selectedDate}
+          oldAmount={oldAmount}
+          currentAmount={currentAmount}
+          onChangeDate={onChangeDay}
+          setOldAmount={setOldAmount}
+          setCurrentAmount={setCurrentAmount}
+          clearForm={clearForm}
+          onSubmitForm={onSubmitForm}
+        />
 
-        <CalculationForm selectedDate={selectedDate} oldAmount={oldAmount} currentAmount={currentAmount}
-                         onChangeDate={onChangeDay} setOldAmount={setOldAmount} setCurrentAmount={setCurrentAmount}
-                         clearForm={clearForm} onSubmitForm={onSubmitForm}/>
+        {currencies && <Currencies selectedDate={selectedDate} currencies={currencies} />}
 
-        {currencies && (
-          <Currencies selectedDate={selectedDate} currencies={currencies}/>
-        )}
-
-        {convertedResult && (
-          <ResultsTable results={convertedResult}/>
-        )}
-
+        {convertedResult && <ResultsTable results={convertedResult} />}
       </div>
     </main>
   )
