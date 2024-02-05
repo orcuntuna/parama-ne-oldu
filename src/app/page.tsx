@@ -8,6 +8,7 @@ import ResultsTable from '@/components/ResultsTable'
 import CalculationForm from '@/components/CalculationForm'
 import Currencies from '@/components/Currencies'
 import { ConvertedResult, CurrencyType } from '@/utils/types'
+import { currentMinWage } from '@/utils/constants'
 
 export default function Home() {
   const [currencies, setCurrencies] = useState<CurrencyType>()
@@ -29,8 +30,11 @@ export default function Home() {
 
     if (!currencies) {
       const data = await getCurrentCurrencies()
-      currentCurrencies = data
-      setCurrencies(data)
+      currentCurrencies = {
+        ...data,
+        minimumWage: currentMinWage,
+      }
+      setCurrencies(currentCurrencies)
     } else {
       currentCurrencies = currencies
     }
@@ -38,22 +42,27 @@ export default function Home() {
     const oldUsd = oldAmount / oldCurrencies.usd
     const oldEur = oldAmount / oldCurrencies.eur
     const oldGold = oldAmount / oldCurrencies.gold
+    const oldMinimumWage = oldAmount / oldCurrencies.minimumWage
 
     const newUsd = currentAmount / currentCurrencies.usd
     const newEur = currentAmount / currentCurrencies.eur
     const newGold = currentAmount / currentCurrencies.gold
+    const newMinimumWage = currentAmount / currentCurrencies.minimumWage
 
     const expectedUsdToTry = oldUsd * currentCurrencies.usd
     const expectedEurToTry = oldEur * currentCurrencies.eur
     const expectedGoldToTry = oldGold * currentCurrencies.gold
+    const expectedMinimumWageToTry = oldMinimumWage * currentCurrencies.minimumWage
 
     const differenceUsd = newUsd - oldUsd
     const differenceEur = newEur - oldEur
     const differenceGold = newGold - oldGold
+    const differenceMinimumWage = newMinimumWage - oldMinimumWage
 
     const differenceUsdToTry = differenceUsd * currentCurrencies.usd
     const differenceEurToTry = differenceEur * currentCurrencies.eur
     const differenceGoldToTry = differenceGold * currentCurrencies.gold
+    const differenceMinimumWageToTry = differenceMinimumWage * currentCurrencies.minimumWage
 
     const response = {
       oldMoney: oldAmount,
@@ -61,18 +70,23 @@ export default function Home() {
       oldUsd,
       oldEur,
       oldGold,
+      oldMinimumWage,
       newUsd,
       newEur,
       newGold,
+      newMinimumWage,
       expectedUsdToTry,
       expectedEurToTry,
       expectedGoldToTry,
+      expectedMinimumWageToTry,
       differenceUsd,
       differenceEur,
       differenceGold,
+      differenceMinimumWage,
       differenceUsdToTry,
       differenceEurToTry,
       differenceGoldToTry,
+      differenceMinimumWageToTry,
     }
 
     setConvertedResult(response)

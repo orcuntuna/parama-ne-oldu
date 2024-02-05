@@ -115,6 +115,33 @@ const ResultsTable = ({ results }: ResultsTableProps) => {
                       {new Intl.NumberFormat().format(results.differenceGoldToTry)} TL
                     </td>
                   </tr>
+
+                  <tr>
+                    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">Asgari Ücret (Oran)</td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      {new Intl.NumberFormat().format(results.oldMinimumWage)} oran
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      {new Intl.NumberFormat().format(results.newMinimumWage)} oran
+                    </td>
+                    <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                      {new Intl.NumberFormat().format(results.expectedMinimumWageToTry)} TL
+                    </td>
+                    <td
+                      className={`whitespace-nowrap px-3 py-4 text-sm text-green-600 font-medium ${
+                        results.differenceMinimumWage < 0 && 'text-red-600'
+                      }`}
+                    >
+                      {new Intl.NumberFormat().format(results.differenceMinimumWage)} oran
+                    </td>
+                    <td
+                      className={`whitespace-nowrap px-3 py-4 text-sm text-green-600 font-medium ${
+                        results.differenceMinimumWageToTry < 0 && 'text-red-600'
+                      }`}
+                    >
+                      {new Intl.NumberFormat().format(results.differenceMinimumWageToTry)} TL
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>

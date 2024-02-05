@@ -12,6 +12,7 @@ export const dates = [
       usd: 18.7029,
       eur: 19.9806,
       gold: 1108,
+      minimumWage: 8506
     },
   },
   {
@@ -21,6 +22,7 @@ export const dates = [
       usd: 26.0312,
       eur: 28.3448,
       gold: 1617,
+      minimumWage: 11402
     },
   },
 ]

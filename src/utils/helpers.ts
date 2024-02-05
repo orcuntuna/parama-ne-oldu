@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CurrencyType } from '@/utils/types'
+import { CurrencyResponse } from '@/utils/types'
 
 export const convertCurrencyToNumber = (currencyString: string): number => {
   const decimalSeparator = ','
@@ -10,7 +10,7 @@ export const convertCurrencyToNumber = (currencyString: string): number => {
   return parseFloat(cleanString.replace(temporaryChar, '.'))
 }
 
-export const getCurrentCurrencies = async (): Promise<CurrencyType> => {
+export const getCurrentCurrencies = async (): Promise<CurrencyResponse> => {
   const response = await axios.get('https://finans.truncgil.com/v3/today.json')
 
   const usdCurrency = response.data.USD.Buying
