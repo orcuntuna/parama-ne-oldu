@@ -58,6 +58,22 @@ const Currencies = ({ selectedDate, currencies }: CurrenciesProps) => {
             </div>
           </div>
         </li>
+        <li className="col-span-1 flex rounded-md shadow-sm">
+          <div className="flex w-16 flex-shrink-0 items-center justify-center bg-amber-600 rounded-l-md text-sm font-medium text-white text-center">
+            Asgari Ücret
+          </div>
+          <div className="flex flex-1 items-center justify-between truncate rounded-r-md border-b border-r border-t border-gray-200 bg-white">
+            <div className="flex-1 truncate px-4 py-2 text-sm">
+              <div className="font-medium text-gray-900 hover:text-gray-600 mb-1">Asgari Ücret</div>
+              <p className="text-gray-500">
+                {selectedDate.text}: <span className="font-medium text-black">{selectedDate.currency.minimumWage}</span>
+              </p>
+              <p className="text-gray-500">
+                Bugün: <span className="font-medium text-black">{currencies.minimumWage}</span>
+              </p>
+            </div>
+          </div>
+        </li>
       </ul>
     </div>
   )

@@ -9,7 +9,7 @@ const Header = () => {
 
       <div>
         <h1 className="text-3xl font-semibold mb-0.5">Parama ne oldu?</h1>
-        <h2 className="text-xl text-gray-600">Paranızın döviz/altın karşısında ne kadar eridiğini kolayca görün.</h2>
+        <h2 className="text-xl text-gray-600">Paranızın döviz/altın/asgari ücret karşısında ne kadar eridiğini kolayca görün.</h2>
       </div>
     </>
   )

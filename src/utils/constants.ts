@@ -1,0 +1,1 @@
+export const currentMinWage = 17002
