@@ -1,6 +1,6 @@
 'use client'
 
-import { FormEvent, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react'
 import { getCurrentCurrencies } from '@/utils/helpers'
 import { dates } from '@/utils/dates'
 import Header from '@/components/Header'
@@ -100,14 +100,19 @@ export default function Home() {
     const date = dates.find((date) => date.id === dateId)
     if (date) {
       setSelectedDate(date)
-      if (convertedResult) {
-        onSubmitForm().then()
-      } else {
+      if (!convertedResult) {
         setConvertedResult(undefined)
         setCurrencies(undefined)
       }
     }
   }
+
+  useEffect(() => {
+    ;(async () => {
+      await onSubmitForm()
+    })()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedDate])
 
   return (
     <main>
