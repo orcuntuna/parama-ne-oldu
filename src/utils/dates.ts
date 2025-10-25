@@ -25,4 +25,24 @@ export const dates = [
       minimumWage: 11402
     },
   },
+  {
+    id: 2,
+    text: '1 Ocak 2024',
+    currency: {
+      usd: 29.6750,
+      eur: 32.7150,
+      gold: 2066,
+      minimumWage: 17002
+    },
+  },
+  {
+    id: 2,
+    text: '1 Ocak 2025',
+    currency: {
+      usd: 35.3685,
+      eur: 36.5955,
+      gold: 3021,
+      minimumWage: 22104
+    },
+  },
 ]
